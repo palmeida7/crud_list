@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All My Tasks</title>
+</head>
+<body>
+    <script>
+        const request = async (url, method, data)=>{
+            let options = {
+                method:method,
+                headers:{
+                    'Content-Type':'application/json'
+                },
+            }
+            if(data && method.toLowerCase() !== 'get') {
+                options.body = JSON.stringify(data)
+            }
+            let response = await fetch(url, options);
+            return response.json();
+        };
+
+        let tasks = await request("/tasks", 'GET')
+
+    </script>
+</body>
+</html>
